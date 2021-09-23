@@ -2,6 +2,7 @@ package com.qa.main.calc;
 
 import java.util.Scanner;
 
+import com.qa.main.exceptions.CantDivideByALargerNumberException;
 import com.qa.main.utils.UserInput;
 
 public class CalculatorApp {
@@ -56,7 +57,15 @@ public class CalculatorApp {
 	
 				case "4":
 					choices = userEntry();
-					answer = Calculator.mult(choices[0], choices[1]);
+				try {
+					answer = Calculator.div(choices[0], choices[1]);
+				} catch (ArithmeticException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (CantDivideByALargerNumberException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					break;
 	
 				case "5":

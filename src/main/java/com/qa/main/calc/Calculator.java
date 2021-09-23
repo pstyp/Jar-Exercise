@@ -1,5 +1,6 @@
 package com.qa.main.calc;
 
+import com.qa.main.exceptions.CantDivideByALargerNumberException;
 
 public class Calculator {
 	
@@ -15,12 +16,12 @@ public class Calculator {
 		return x * y;
 	}
 	
-	public static double div(double x, double y) throws ArithmeticException {
+	public static double div(double x, double y) throws ArithmeticException, CantDivideByALargerNumberException {
 
-		if (x == 0 || y == 0) {
+		if (y == 0) {
 			throw new ArithmeticException("Cannot div by 0");
 		}else if (x < y){
-			throw new ArithmeticException("Avoid dividing by a large number than " + x);
+			throw new CantDivideByALargerNumberException("Avoid dividing by a larger number than " + x);
 		}else {
 			return x / y;
 		}
